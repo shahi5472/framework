@@ -67,10 +67,12 @@ RouteData? _getMatchRoute(String inputRoute, String method, String? domain) {
         .trim()
         .replaceFirst(RegExp(r'^/'), '')
         .replaceAll('//', '/')
+        .replaceAll(RegExp(r'/$'), '')
         .replaceFirst(RegExp(r'/$'), '/');
     inputRoute = inputRoute
         .replaceFirst(RegExp(r'^/'), '')
         .replaceAll('//', '/')
+        .replaceAll(RegExp(r'/$'), '')
         .replaceFirst(RegExp(r'/$'), '');
 
     if (route.prefix != null) {
