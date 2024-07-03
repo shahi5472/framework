@@ -79,7 +79,6 @@ class Migration {
           : '';
       query.write(
           '''DROP TABLE IF EXISTS `$name`; CREATE TABLE `$name` (${_queries.join(',')}$primary$index$foreig)''');
-
       String sqlQuery = query.toString();
       if (MigrationConnection().database?.driver == 'Postgresql') {
         sqlQuery = _mysqlToPosgresqlMapper(sqlQuery);
@@ -762,17 +761,16 @@ class Migration {
   void uuid(
     String name, {
     bool nullable = false,
-    String? defaultValue,
+    int length = 36,
     String? comment,
     String? collation,
     String? expression,
     String? virtuality,
   }) {
-    addColumn(
+    char(
       name,
-      'UUID',
       nullable: nullable,
-      defaultValue: defaultValue,
+      length: length,
       comment: comment,
       collation: collation,
       expression: expression,
