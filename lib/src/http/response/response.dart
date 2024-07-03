@@ -8,6 +8,7 @@ enum ResponseType {
   json,
   none,
   html,
+  sse,
   streamFile,
   download,
 }
@@ -28,6 +29,25 @@ class Response {
     this.httpStatusCode = HttpStatus.ok,
     this.headers = const {},
   });
+
+  @protected
+  Future<void> sseHandler(HttpResponse res) async {
+    res.headers.contentType = ContentType.parse('text/event-stream');
+    res.headers.add(HttpHeaders.cacheControlHeader, 'no-cache');
+    res.headers.add(HttpHeaders.connectionHeader, 'keep-alive');
+    res.headers.add(HttpHeaders.transferEncodingHeader, 'chunked');
+
+    void writeSSE(String data) {
+      res.add(utf8.encode('data: $data\n\n'));
+    }
+
+    await for (var event in data) {
+      writeSSE(jsonEncode(event));
+      await res.flush();
+    }
+
+    await res.close();
+  }
 
   void makeResponse(HttpResponse res) async {
     res.statusCode = httpStatusCode;
@@ -50,6 +70,9 @@ class Response {
         res.headers.contentType = ContentType.html;
         res.write(data);
         await res.close();
+        break;
+      case ResponseType.sse:
+        await sseHandler(res);
         break;
       case ResponseType.streamFile:
         StreamFile? stream = StreamFile(
@@ -131,6 +154,18 @@ class Response {
           "bytes": bytes,
         },
         responseType: ResponseType.streamFile,
+        headers: headers,
+      );
+
+  static sse(
+    Stream<dynamic> eventStream, {
+    int statusCode = HttpStatus.ok,
+    Map<String, String> headers = const {},
+  }) =>
+      Response(
+        data: eventStream,
+        responseType: ResponseType.sse,
+        httpStatusCode: statusCode,
         headers: headers,
       );
 
