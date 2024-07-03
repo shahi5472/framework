@@ -1,3 +1,9 @@
+## 0.3.3
+
+- Fix group route issue
+- Fix uuid issue (#88)
+- Add `Server-Sent Events (SSE)` response (#89) Thank you [Dartly](https://github.com/Dartly)
+
 ## 0.3.2
 
 - Refactor Response class
