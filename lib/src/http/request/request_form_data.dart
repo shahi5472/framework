@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:mime/mime.dart';
 import 'package:string_scanner/string_scanner.dart';
@@ -31,7 +32,7 @@ class RequestFormData {
 
       if (inputName != null) {
         if (data['filename'] == null || data['filename']!.isEmpty) {
-          var value = String.fromCharCodes(await formItem.first);
+          var value = utf8.decode(await formItem.first);
           inputs[inputName] =
               int.tryParse(value.toString()) ?? value.toString();
         } else {
