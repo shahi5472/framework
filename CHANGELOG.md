@@ -1,3 +1,7 @@
+## 0.3.3+1
+
+- Fix encoding charset for form input handling
+
 ## 0.3.3
 
 - Fix group route issue
