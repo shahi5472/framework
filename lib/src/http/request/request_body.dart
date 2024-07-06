@@ -25,7 +25,7 @@ class RequestBody {
     if (isUrlencoded(request.headers.contentType)) {
       try {
         String bodyString = await utf8.decoder.bind(request).join();
-        return _extractUrlEncodedData(bodyString);
+        return Uri.splitQueryString(bodyString);
       } catch (err) {
         return <String, dynamic>{};
       }
