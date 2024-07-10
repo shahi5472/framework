@@ -65,11 +65,13 @@ RouteData? _getMatchRoute(String inputRoute, String method, String? domain) {
   List<RouteData> routesList = Router().routes.where((route) {
     String routePath = route.path
         .trim()
+        .toLowerCase()
         .replaceFirst(RegExp(r'^/'), '')
         .replaceAll('//', '/')
         .replaceAll(RegExp(r'/$'), '')
         .replaceFirst(RegExp(r'/$'), '/');
     inputRoute = inputRoute
+        .toLowerCase()
         .replaceFirst(RegExp(r'^/'), '')
         .replaceAll('//', '/')
         .replaceAll(RegExp(r'/$'), '')
