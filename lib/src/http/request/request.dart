@@ -33,11 +33,36 @@ class Request {
 
   Map<String, dynamic> get _query => uri.queryParameters;
 
-  List<Cookie> get cookies => request.cookies;
-
   Map<String, dynamic> body = <String, dynamic>{};
+  final Map<String, dynamic> _cookies = <String, dynamic>{};
+
+  T? cookie<T>(String key) {
+    if (_cookies[key] == null) return null;
+    return switch (T.toString()) {
+      'String' => _cookies[key].toString(),
+      'bool' => bool.parse(_cookies[key]) as T,
+      'int' => int.parse(_cookies[key]) as T,
+      'double' => double.parse(_cookies[key]) as T,
+      (_) => _cookies[key],
+    };
+  }
+
+  void _extractCookies() {
+    List<String>? cookies = _httpHeaders[HttpHeaders.cookieHeader];
+    if (cookies == null) {
+      return;
+    }
+    for (String cookie in cookies) {
+      List cookies = cookie.split(';');
+      for (String cookie in cookies) {
+        List cookieList = cookie.split('=');
+        _cookies[cookieList[0].trim()] = cookieList[1].trim();
+      }
+    }
+  }
 
   Future<Request> extractBody() async {
+    _extractCookies();
     final whereMethod = ['post', 'patch', 'put']
         .where((method) => method == request.method.toLowerCase())
         .toList();
