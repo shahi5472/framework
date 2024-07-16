@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:uuid/v4.dart';
+import 'package:uuid/v8.dart';
 import 'package:vania/src/http/middleware/middleware.dart';
 import 'package:vania/src/http/middleware/web_socket_middleware_handler.dart';
 import 'websocket_client.dart';
@@ -36,7 +36,7 @@ class WebSocketHandler implements WebSocketEvent {
 
     WebSocket websocket = await WebSocketTransformer.upgrade(req);
 
-    String sessionId = 'ws:${UuidV4().generate()}';
+    String sessionId = 'ws:${UuidV8().generate()}';
 
     _session.addNewSession(sessionId, websocket);
 
@@ -48,6 +48,9 @@ class WebSocketHandler implements WebSocketEvent {
 
     websocket.add(jsonEncode({
       'event': 'connect',
+      'payload': {
+        'session_id': sessionId,
+      },
     }));
 
     websocket.listen((data) async {

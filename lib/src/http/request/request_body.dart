@@ -40,6 +40,7 @@ class RequestBody {
     return <String, dynamic>{};
   }
 
+/*
   static Map<String, dynamic> _extractUrlEncodedData(String inputString) {
     Map<String, dynamic> resultMap = {};
     List<String> keyValuePairs = inputString.split('&');
@@ -53,6 +54,7 @@ class RequestBody {
 
     return resultMap;
   }
+*/
 
   // static bool _extractUrlEncodedData(String encodedData) {
   //   List data = encodedData.split("&");

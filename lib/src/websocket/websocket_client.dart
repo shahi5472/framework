@@ -5,6 +5,11 @@ import 'websocket_session.dart';
 abstract class WebSocketClient {
   const WebSocketClient();
   String get clientId;
+  List<String> get activeSessions;
+  List<String> getRoomMembers({String roomId = ''});
+  bool isActiveSession({String sessionId = ''});
+  String get activeRoom;
+  String get previousRoom;
   void emit(String event, dynamic payload);
   void toRoom(String event, String room, dynamic payload);
   void broadcast(String event, dynamic payload);
@@ -23,6 +28,9 @@ class WebSocketClientImpl implements WebSocketClient {
 
   @override
   String get clientId => id;
+
+  @override
+  List<String> get activeSessions => session.getActiveSessionIds();
 
   /// emit to self sender
   /// ```
@@ -97,4 +105,18 @@ class WebSocketClientImpl implements WebSocketClient {
   void leftRoom(String roomId) {
     toRoom("left-room", roomId, "left room");
   }
+
+  @override
+  List<String> getRoomMembers({String roomId = ''}) =>
+      session.getRoomMembers(roomId);
+
+  @override
+  String get activeRoom => session.getWebSocketInfo(id)?.activeRoom ?? '';
+
+  @override
+  String get previousRoom => session.getWebSocketInfo(id)?.previousRoom ?? '';
+
+  @override
+  bool isActiveSession({String sessionId = ''}) =>
+      session.isActiveSession(sessionId);
 }
