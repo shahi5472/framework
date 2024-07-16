@@ -86,11 +86,15 @@ class WebsocketSession {
     return _rooms[roomId] != null ? true : false;
   }
 
-  bool isSession(String sessionId) {
+  bool isActiveSession(String sessionId) {
     return _activeSessions[sessionId] != null ? true : false;
   }
 
   List<SessionInfo> getActiveSessions() {
     return _activeSessions.values.toList();
+  }
+
+  List<String> getActiveSessionIds() {
+    return _activeSessions.keys.toList();
   }
 }
