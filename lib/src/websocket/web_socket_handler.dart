@@ -47,7 +47,7 @@ class WebSocketHandler implements WebSocketEvent {
     );
 
     websocket.add(jsonEncode({
-      'event': 'connect',
+      'event': 'connected',
       'payload': {
         'session_id': sessionId,
       },

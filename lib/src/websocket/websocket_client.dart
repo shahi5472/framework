@@ -54,7 +54,8 @@ class WebSocketClientImpl implements WebSocketClient {
   /// ```
   @override
   void toRoom(String event, String room, dynamic payload) {
-    List<String> members = session.getRoomMembers('${routePath}_$room');
+    String roomId = room.replaceFirst('ws_', '');
+    List<String> members = session.getRoomMembers('${routePath}_$roomId');
     for (String member in members) {
       SessionInfo? info = session.getWebSocketInfo(member);
       if (info != null) {
