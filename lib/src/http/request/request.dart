@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:vania/src/exception/validation_exception.dart';
 import 'package:vania/src/http/request/request_body.dart';
+import 'package:vania/src/http/validation/validation_chain/validation.dart';
+import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 import 'package:vania/src/http/validation/validator.dart';
 import 'package:vania/src/route/route_data.dart';
 import 'package:vania/vania.dart';
@@ -298,6 +300,24 @@ class Request {
     validator.validate(rules);
     if (validator.hasError) {
       throw ValidationException(message: validator.errors);
+    }
+  }
+
+  void validateChain(List<Validation> validations) {
+    Map<String, String> errors = {};
+    final data = all();
+    for (Validation validation in validations) {
+      dynamic fieldValue =
+          data.containsKey(validation.field) ? data[validation.field] : null;
+      for (ValidationRule rule in validation.rules) {
+        if (!rule.validate(fieldValue)) {
+          errors[validation.field] = rule.errorMessage;
+          break; // Stop at the first failed validation per field
+        }
+      }
+    }
+    if (errors.isNotEmpty) {
+      throw ValidationException(message: errors);
     }
   }
 
