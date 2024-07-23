@@ -1,15 +1,15 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
-class IsString extends ValidationRule {
-  IsString(super.errorMessage);
+class IsBoolean extends ValidationRule {
+  IsBoolean(super.customErrorMessage);
 
   @override
   bool validate(value) {
-    return value != null && value is String;
+    return value is bool;
   }
-  
+
   @override
   String getDefaultErrorMessage(String field) {
-    return 'The $field must be a string';
+    return 'The $field must be a boolean';
   }
 }

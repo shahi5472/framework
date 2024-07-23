@@ -1,5 +1,7 @@
 abstract class ValidationRule {
-  final String errorMessage;
-  ValidationRule(this.errorMessage);
+  final String? customErrorMessage;
+  ValidationRule(this.customErrorMessage);
   bool validate(dynamic value);
+  String get errorMessage => customErrorMessage ?? getDefaultErrorMessage('');
+  String getDefaultErrorMessage(String field);
 }

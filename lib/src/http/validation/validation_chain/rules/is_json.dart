@@ -1,15 +1,15 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
-class IsString extends ValidationRule {
-  IsString(super.errorMessage);
+class IsJson extends ValidationRule {
+  IsJson(super.customErrorMessage);
 
   @override
   bool validate(value) {
-    return value != null && value is String;
+    return value is Map;
   }
-  
+
   @override
   String getDefaultErrorMessage(String field) {
-    return 'The $field must be a string';
+    return 'The $field must be an Json';
   }
 }
