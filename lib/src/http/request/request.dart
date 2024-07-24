@@ -291,7 +291,18 @@ class Request {
     return header(HttpHeaders.refererHeader);
   }
 
-  void validate(Map<String, String> rules,
+  void validate(dynamic rules,
+      [Map<String, String> messages = const <String, String>{}]) {
+    assert(rules is Map<String, String> || rules is List<Validation>,
+        'Rules must be either Map<String, String> or List<Validation>.');
+    if (rules is Map<String, String>) {
+      _validate(rules, messages);
+    } else {
+      _validateChain(rules as List<Validation>);
+    }
+  }
+
+  void _validate(Map<String, String> rules,
       [Map<String, String> messages = const <String, String>{}]) {
     Validator validator = Validator(data: all());
     if (messages.isNotEmpty) {
@@ -303,7 +314,7 @@ class Request {
     }
   }
 
-  void validateChain(List<Validation> validations) {
+  void _validateChain(List<Validation> validations) {
     Map<String, String> errors = {};
     final data = all();
     for (Validation validation in validations) {
