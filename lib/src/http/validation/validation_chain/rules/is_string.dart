@@ -7,7 +7,7 @@ class IsString extends ValidationRule {
   bool validate(value) {
     return value != null && value is String;
   }
-  
+
   @override
   String getDefaultErrorMessage(String field) {
     return 'The $field must be a string';

@@ -6,7 +6,7 @@ class Max extends ValidationRule {
 
   @override
   bool validate(value) {
-   value = num.parse(value.toString());
+    value = num.parse(value.toString());
     return value <= num.parse(maxValue.toString());
   }
 

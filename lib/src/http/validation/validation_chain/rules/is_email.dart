@@ -6,8 +6,7 @@ class IsEmail extends ValidationRule {
 
   @override
   bool validate(dynamic value) {
-    return value!=null && emailRegExp
-        .hasMatch(value.toString());
+    return value != null && emailRegExp.hasMatch(value.toString());
   }
 
   @override
