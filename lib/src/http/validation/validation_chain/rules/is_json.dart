@@ -10,6 +10,6 @@ class IsJson extends ValidationRule {
 
   @override
   String getDefaultErrorMessage(String field) {
-    return 'The $field must be an Json';
+    return 'The $field must be a Json';
   }
 }

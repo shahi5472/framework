@@ -1,3 +1,4 @@
+import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsAlphaNumeric extends ValidationRule {
@@ -5,8 +6,7 @@ class IsAlphaNumeric extends ValidationRule {
 
   @override
   bool validate(value) {
-    RegExp alphaDashRegex = RegExp(r'^[a-zA-Z0-9]+$');
-    return alphaDashRegex.hasMatch(value.toString());
+    return alphaNumericRegExp.hasMatch(value.toString());
   }
 
   @override

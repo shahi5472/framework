@@ -4,11 +4,6 @@ class IsNumeric extends ValidationRule {
   IsNumeric(String super.errorMessage);
 
   @override
-  String getDefaultErrorMessage(String field) {
-    return 'The $field must be a number';
-  }
-
-  @override
   bool validate(value) {
     try {
       num.parse(value.toString());
@@ -16,5 +11,10 @@ class IsNumeric extends ValidationRule {
     } catch (_) {
       return false;
     }
+  }
+
+  @override
+  String getDefaultErrorMessage(String field) {
+    return 'The $field must be a number';
   }
 }

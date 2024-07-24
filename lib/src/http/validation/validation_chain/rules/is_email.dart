@@ -1,3 +1,4 @@
+import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsEmail extends ValidationRule {
@@ -5,8 +6,7 @@ class IsEmail extends ValidationRule {
 
   @override
   bool validate(dynamic value) {
-    if (value == null) return false;
-    return RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+    return value!=null && emailRegExp
         .hasMatch(value.toString());
   }
 
