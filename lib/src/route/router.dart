@@ -11,7 +11,7 @@ class Router {
   String? _prefix;
   String? _groupPrefix;
   String? _groupDomain;
-  List<Middleware>? _groupMiddleware;
+  final List<Middleware> _groupMiddleware = [];
 
   final List<RouteData> _routes = [];
 
@@ -69,10 +69,10 @@ class Router {
   /// Adds middleware to the last added route.
   Router middleware([List<Middleware>? middleware]) {
     if (middleware != null) {
-      if (_routes.last.preMiddleware.isNotEmpty) {
-        middleware.addAll(_routes.last.preMiddleware);
-      }
-      _routes.last.preMiddleware = middleware;
+      _routes.last.preMiddleware = [
+        ..._routes.last.preMiddleware,
+        ...middleware
+      ];
     }
     return this;
   }
@@ -81,7 +81,7 @@ class Router {
   Router prefix([String? prefix]) {
     if (prefix != null) {
       String basePath = _routes.last.path.startsWith('/')
-          ? _routes.last.path.replaceFirst('/', '')
+          ? _routes.last.path.substring(1)
           : _routes.last.path;
       _routes.last.path =
           prefix.endsWith("/") ? "$prefix$basePath" : "$prefix/$basePath";
@@ -254,16 +254,34 @@ class Router {
   static void group(
     Function callBack, {
     String? prefix,
-    List<Middleware>? middleware,
+    List<Middleware> middleware = const [],
     String? domain,
   }) {
     Router router = Router();
-    router._groupPrefix = prefix;
-    router._groupMiddleware = middleware;
     router._groupDomain = domain;
+
+    if (router._groupPrefix != null) {
+      if (prefix != null) {
+        router._groupPrefix =
+            "${router._groupPrefix}/$prefix".replaceAll(r'//', '/');
+      }
+    } else {
+      router._groupPrefix = prefix;
+    }
+    List<Middleware> previousGroupMiddleware =
+        List.from(router._groupMiddleware);
+    router._groupMiddleware.addAll(middleware);
+
     callBack();
-    router._groupPrefix = null;
-    router._groupMiddleware = null;
+
+    if (router._groupPrefix != null) {
+      router._groupPrefix = router._groupPrefix!.replaceAll("$prefix", '');
+    }
+
+    router._groupMiddleware
+      ..clear()
+      ..addAll(previousGroupMiddleware);
+
     router._groupDomain = null;
   }
 }

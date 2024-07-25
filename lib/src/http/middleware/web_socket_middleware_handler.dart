@@ -3,8 +3,7 @@ import 'middleware.dart';
 
 Future<void> webSocketMiddlewareHandler(
     List<WebSocketMiddleware> middlewares, HttpRequest request) async {
-  for (int i = 0; i < middlewares.length - 1; i++) {
-    middlewares[i].setNext(middlewares[i + 1]);
+  for (WebSocketMiddleware middleware in middlewares) {
+    await middleware.handle(request);
   }
-  await middlewares.first.handle(request);
 }
