@@ -15,14 +15,12 @@ environment:
    sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  build_runner: ^2.4.11
   crypto: ^3.0.3
   dart_jsonwebtoken: ^2.14.0
   eloquent: ^3.2.1
   mailer: ^6.1.0
   meta: ^1.15.0
   mime: ^1.0.5
-  mockito: ^5.4.4
   path: ^1.9.0
   sprintf: ^7.0.0
   string_scanner: ^1.2.0
@@ -33,3 +31,5 @@ dev_dependencies:
   test: ^1.25.5
   http: ^1.2.1
   http_parser: ^4.0.2
+  build_runner: ^2.4.11
+  mockito: ^5.4.4
