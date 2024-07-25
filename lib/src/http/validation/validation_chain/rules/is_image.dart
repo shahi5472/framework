@@ -1,9 +1,9 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 import 'package:vania/vania.dart';
 
-class IsFile extends ValidationRule {
+class IsImage extends ValidationRule {
   final String args;
-  IsFile(String super.customErrorMessage, this.args);
+  IsImage(String super.customErrorMessage, this.args);
 
   @override
   bool validate(value) {
