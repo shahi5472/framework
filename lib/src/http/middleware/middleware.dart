@@ -4,18 +4,14 @@ import 'package:vania/vania.dart';
 
 abstract class Middleware {
   Future handle(Request req);
-  Middleware? next;
 
-  void setNext(Middleware middleware) {
-    next = middleware;
-  }
+  @Deprecated('Will be deleted in the next versions')
+  Middleware? next;
 }
 
 abstract class WebSocketMiddleware {
   Future handle(HttpRequest req);
-  WebSocketMiddleware? next;
 
-  void setNext(WebSocketMiddleware middleware) {
-    next = middleware;
-  }
+  @Deprecated('Will be deleted in the next versions')
+  WebSocketMiddleware? next;
 }
