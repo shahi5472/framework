@@ -62,3 +62,5 @@ export 'src/logger/logger.dart';
 
 export 'src/redis/vania_redis.dart';
 export 'src/cache/redis_cache_driver.dart';
+
+export 'src/http/validation/validation_chain/export_chain_validation.dart';
