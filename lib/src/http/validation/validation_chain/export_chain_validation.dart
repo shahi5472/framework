@@ -1,4 +1,3 @@
-
 export 'rules/between.dart';
 export 'rules/confirmed.dart';
 export 'rules/end_width.dart';
@@ -33,4 +32,3 @@ export 'rules/required_if_not.dart';
 export 'rules/start_with.dart';
 export 'validation.dart';
 export 'validation_rule.dart';
-

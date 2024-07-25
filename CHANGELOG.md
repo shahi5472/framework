@@ -1,3 +1,26 @@
+## 0.4.0
+
+- Add a new field validation mechanism by [alirezat66](https://github.com/alirezat66) - [PR 99](https://github.com/vania-dart/framework/pull/99)
+- Fix nested route group [#98](https://github.com/vania-dart/framework/issues/98)
+- Fix middleware issue
+
+## 0.3.5+1
+
+- Fix send message  to room
+
+## 0.3.5
+
+- Fix websocket session id
+- Add get room memmbers
+- Add is active session
+- Add get active room
+- Add get active sessions
+
+## 0.3.4
+
+- Fix route camle case issue
+- Add get cookie from the request
+
 ## 0.3.3+1
 
 - Fix encoding charset for form input handling
