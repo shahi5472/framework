@@ -4,7 +4,7 @@ class IsBoolean extends ValidationRule {
   IsBoolean({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     return value is bool;
   }
 

@@ -4,7 +4,7 @@ class IsDate extends ValidationRule {
   IsDate({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     try {
       DateTime.parse(value.toString());
       return true;

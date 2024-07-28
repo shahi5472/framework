@@ -5,7 +5,7 @@ class IsAlphaNumeric extends ValidationRule {
   IsAlphaNumeric({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     return alphaNumericRegExp.hasMatch(value.toString());
   }
 

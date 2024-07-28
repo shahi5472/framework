@@ -5,7 +5,7 @@ class IsAlpha extends ValidationRule {
   IsAlpha({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     return value is String && alphaRegExp.hasMatch(value);
   }
 

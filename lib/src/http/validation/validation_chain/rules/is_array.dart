@@ -4,7 +4,7 @@ class IsArray extends ValidationRule {
   IsArray({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     return value is List;
   }
 

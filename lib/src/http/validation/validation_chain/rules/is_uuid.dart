@@ -5,7 +5,7 @@ class IsUUID extends ValidationRule {
   IsUUID({super.customErrorMessage});
 
   @override
-  bool validate(value,data) {
+  bool validate(value, data) {
     return uuidRegExp.hasMatch(value.toString());
   }
 
