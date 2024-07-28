@@ -4,10 +4,12 @@ class LengthBetween extends ValidationRule {
   final num lowerBoundary;
   final num higherBoundary;
   LengthBetween(
-      super.customErrorMessage, this.lowerBoundary, this.higherBoundary);
+      {super.customErrorMessage,
+      required this.lowerBoundary,
+      required this.higherBoundary});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     value = value.toString().length;
     return value >= lowerBoundary && value <= higherBoundary;
   }

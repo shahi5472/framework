@@ -2,10 +2,10 @@ import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsAlphaNumeric extends ValidationRule {
-  IsAlphaNumeric(super.customErrorMessage);
+  IsAlphaNumeric({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     return alphaNumericRegExp.hasMatch(value.toString());
   }
 

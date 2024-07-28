@@ -1,10 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsRequired extends ValidationRule {
-  IsRequired(super.customErrorMessage);
+  IsRequired({super.customErrorMessage});
 
   @override
-  bool validate(dynamic value) {
+  bool validate(dynamic value, data) {
     return value != null && value.toString().isNotEmpty;
   }
 

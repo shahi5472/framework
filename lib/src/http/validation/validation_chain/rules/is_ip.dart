@@ -2,10 +2,10 @@ import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsIp extends ValidationRule {
-  IsIp(String super.errorMessage);
+  IsIp({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     return ipRegExp.hasMatch(value.toString());
   }
 

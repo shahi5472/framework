@@ -1,12 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsDate extends ValidationRule {
-  IsDate(
-    super.customErrorMessage,
-  );
+  IsDate({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     try {
       DateTime.parse(value.toString());
       return true;
