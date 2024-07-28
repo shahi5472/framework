@@ -1,12 +1,11 @@
-import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 import 'package:vania/vania.dart';
 
 class IsFile extends ValidationRule {
   final String args;
-  IsFile(String super.customErrorMessage, this.args);
+  IsFile({required this.args, super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     if (value is! RequestFile && value is! List<RequestFile>) {
       return false;
     }

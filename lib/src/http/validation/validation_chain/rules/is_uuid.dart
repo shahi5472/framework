@@ -2,12 +2,10 @@ import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsUUID extends ValidationRule {
-  IsUUID(
-    super.customErrorMessage,
-  );
+  IsUUID({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value,data) {
     return uuidRegExp.hasMatch(value.toString());
   }
 

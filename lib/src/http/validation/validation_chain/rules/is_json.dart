@@ -1,10 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsJson extends ValidationRule {
-  IsJson(super.customErrorMessage);
+  IsJson({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     return value is Map;
   }
 

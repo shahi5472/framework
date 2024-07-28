@@ -3,10 +3,14 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 class Between extends ValidationRule {
   final num lowerBoundary;
   final num higherBoundary;
-  Between(super.customErrorMessage, this.lowerBoundary, this.higherBoundary);
+  Between({
+    required this.lowerBoundary,
+    required this.higherBoundary,
+    super.customErrorMessage
+  });
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     value = num.parse(value.toString());
     return value >= lowerBoundary && value <= higherBoundary;
   }

@@ -1,10 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsString extends ValidationRule {
-  IsString(super.errorMessage);
+  IsString({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     return value != null && value is String;
   }
 

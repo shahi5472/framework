@@ -1,12 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsURL extends ValidationRule {
-  IsURL(
-    super.customErrorMessage,
-  );
+  IsURL({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     try {
       Uri? uri = Uri.tryParse(value);
       return uri != null && uri.hasScheme && uri.hasAuthority;

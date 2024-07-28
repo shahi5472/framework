@@ -1,10 +1,10 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsNumeric extends ValidationRule {
-  IsNumeric(String super.errorMessage);
+  IsNumeric({super.customErrorMessage});
 
   @override
-  bool validate(value) {
+  bool validate(value, data) {
     try {
       num.parse(value.toString());
       return true;
