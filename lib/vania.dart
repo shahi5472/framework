@@ -40,7 +40,7 @@ export 'src/database/migration.dart';
 export 'src/database/seeder/seeder.dart';
 export 'src/enum/column_index.dart';
 export 'src/extensions/pagination_extension.dart';
-export 'src/extensions/database_helper.dart';
+export 'src/extensions/database_operation_extension.dart';
 export 'package:eloquent/src/query/query_builder.dart';
 export 'package:eloquent/eloquent.dart' show QueryException, Connection;
 
