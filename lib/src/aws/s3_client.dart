@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
-import 'package:vania/src/extensions/date_time_aws_format.dart';
+import 'package:vania/src/extensions/date_time_extension.dart';
 import 'package:vania/src/utils/helper.dart';
 
 class S3Client {
