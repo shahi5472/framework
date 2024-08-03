@@ -1,5 +1,5 @@
 import 'package:sprintf/sprintf.dart';
-import 'package:vania/src/extensions/list_extension.dart';
+import 'package:vania/src/extensions/string_list_extension.dart';
 import 'package:vania/src/extensions/map_extension.dart';
 
 import 'nested_validation.dart';
