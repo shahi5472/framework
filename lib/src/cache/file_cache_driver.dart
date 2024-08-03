@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:crypto/crypto.dart';
-import 'package:vania/src/extensions/string_extension.dart';
 import 'package:vania/vania.dart';
 
 class FileCacheDriver implements CacheDriver {

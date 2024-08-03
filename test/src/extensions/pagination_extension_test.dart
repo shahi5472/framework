@@ -41,8 +41,8 @@ void main() {
     });
     test('when we have no env or APP_URL should get ArgumentError', () async {
       // Assuming 'APP_URL' environment variable is set to 'http://example.com'
-      expect(
-          () => queryBuilder.paginate(15, 1, null), throwsA(isA<ArgumentError>()));
+      expect(() => queryBuilder.paginate(15, 1, null),
+          throwsA(isA<ArgumentError>()));
     });
 
     test('simplePaginate method handles boundaries correctly', () async {
