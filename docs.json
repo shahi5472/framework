@@ -1,0 +1,16 @@
+{
+  "name": "Vania Dart",
+  "theme": {
+    "primary": "#2AA0BE"
+  },
+  "sidebar": [{
+    "group": "Getting Started",
+    "pages": [{
+      "title": "Introduction",
+      "href": "/"
+    }, {
+      "title": "Getting Started",
+      "href": "/getting-started"
+    }]
+  }]
+}
