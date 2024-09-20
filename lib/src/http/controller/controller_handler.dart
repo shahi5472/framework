@@ -41,7 +41,7 @@ class ControllerHandler {
 
 void _response(Request req, message, [statusCode = 400]) {
   if (req.headers['accept'].toString().contains('html')) {
-     Response.html(message).makeResponse(req.response);
+    Response.html(message).makeResponse(req.response);
   } else {
     Response.json(
       {

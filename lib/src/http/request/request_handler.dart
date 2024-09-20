@@ -49,7 +49,6 @@ Future httpRequestHandler(HttpRequest req) async {
 }
 
 void _response(req, message) {
-
   if (req.headers.value('accept').toString().contains('html')) {
     Response.html(message).makeResponse(req.response);
   } else {
