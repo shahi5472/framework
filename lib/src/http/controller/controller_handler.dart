@@ -28,8 +28,10 @@ class ControllerHandler {
 
       response.makeResponse(request.response);
     } on ValidationException catch (error) {
+      print(request.headers['accept']);
+      print(request.headers['accept'].contains('html'));
       error
-          .response(request.headers['accept'] == "application/json")
+          .response(request.headers['accept'].toString().contains('html'))
           .makeResponse(request.response);
     } catch (error) {
       _response(request, error.toString());
@@ -38,14 +40,14 @@ class ControllerHandler {
 }
 
 void _response(Request req, message, [statusCode = 400]) {
-  if (req.headers['accept'] == "application/json") {
+  if (req.headers['accept'].toString().contains('html')) {
+    Response.html(message).makeResponse(req.response);
+  } else {
     Response.json(
       {
         "message": message,
       },
       statusCode,
     ).makeResponse(req.response);
-  } else {
-    Response.html(message).makeResponse(req.response);
   }
 }

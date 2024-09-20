@@ -35,7 +35,7 @@ Future httpRequestHandler(HttpRequest req) async {
     } on BaseHttpResponseException catch (error) {
       error
           .response(
-            req.headers.value('accept') == "application/json",
+            req.headers.value('accept').toString().contains('html'),
           )
           .makeResponse(req.response);
     } on InvalidArgumentException catch (e) {
@@ -49,14 +49,14 @@ Future httpRequestHandler(HttpRequest req) async {
 }
 
 void _response(req, message) {
-  if (req.headers.value('accept') == "application/json") {
+  if (req.headers.value('accept').toString().contains('html')) {
+    Response.html(message).makeResponse(req.response);
+  } else {
     Response.json(
       {
         "message": message,
       },
       400,
     ).makeResponse(req.response);
-  } else {
-    Response.html(message).makeResponse(req.response);
   }
 }

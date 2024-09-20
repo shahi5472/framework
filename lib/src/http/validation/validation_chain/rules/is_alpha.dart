@@ -2,7 +2,7 @@ import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsAlpha extends ValidationRule {
-  IsAlpha({super.customErrorMessage});
+  IsAlpha({super.message});
 
   @override
   bool validate(value, data) {

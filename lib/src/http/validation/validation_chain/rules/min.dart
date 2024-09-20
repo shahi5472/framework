@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class Min extends ValidationRule {
   final num minValue;
-  Min({required this.minValue, super.customErrorMessage});
+  Min({required this.minValue, super.message});
 
   @override
   bool validate(value, data) {

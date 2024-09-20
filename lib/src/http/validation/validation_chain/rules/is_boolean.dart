@@ -1,7 +1,7 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsBoolean extends ValidationRule {
-  IsBoolean({super.customErrorMessage});
+  IsBoolean({super.message});
 
   @override
   bool validate(value, data) {

@@ -6,7 +6,7 @@ class Between extends ValidationRule {
   Between(
       {required this.lowerBoundary,
       required this.higherBoundary,
-      super.customErrorMessage});
+      super.message});
 
   @override
   bool validate(value, data) {

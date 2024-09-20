@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class LessThan extends ValidationRule {
   final num compare;
-  LessThan({required this.compare, super.customErrorMessage});
+  LessThan({required this.compare, super.message});
 
   @override
   bool validate(value, data) {

@@ -1,7 +1,7 @@
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class Confirmed extends ValidationRule {
-  Confirmed({super.customErrorMessage});
+  Confirmed({super.message});
 
   @override
   bool validate(value, data) {

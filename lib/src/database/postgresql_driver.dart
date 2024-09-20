@@ -15,20 +15,25 @@ class PostgreSQLDriver implements DatabaseDriver {
   Future<DatabaseDriver?> init() async {
     try {
       var manager = Manager();
-      manager.addConnection({
+      Map<String, dynamic> config = {
         'driver': 'pgsql',
         'host': env<String>('DB_HOST', '127.0.0.1'),
         'port': env<int>('DB_PORT', 5432),
         'database': env<String>('DB_DATABASE', 'vania'),
         'username': env<String>('DB_USERNAME', 'root'),
         'password': env<String>('DB_PASSWORD', ''),
-        //'sslmode': env<bool>('DB_SSL_MODE',true) == true  ? 'require' : '',
         'pool': env<bool>('DB_POOL', false),
         'poolsize': env<int>('DB_POOL_SIZE', 0),
         'charset': env<String>('DB_CHARSET', 'utf8'),
         'prefix': env<String>('DB_PREFIX', ''),
         'schema': env<String>('DB_SCHEMA', 'public'),
-      });
+      };
+
+      if (env<bool>('DB_SSL_MODE', false) == true) {
+        config['sslmode'] = 'require';
+      }
+
+      manager.addConnection(config);
       manager.setAsGlobal();
       _connection = await manager.connection();
       return this;

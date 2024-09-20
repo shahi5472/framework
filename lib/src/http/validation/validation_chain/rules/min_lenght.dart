@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class MinLength extends ValidationRule {
   int minLength;
-  MinLength({required this.minLength, super.customErrorMessage});
+  MinLength({required this.minLength, super.message});
 
   @override
   bool validate(value, data) {

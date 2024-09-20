@@ -20,7 +20,7 @@ RouteData? httpRouteHandler(HttpRequest req) {
     } else {
       final isFile = setStaticPath(req);
       if (isFile == null) {
-        if (req.headers.value('accept') == "application/json") {
+        if (!req.headers.value('accept').toString().contains('html')) {
           throw NotFoundException(
             message: {'message': 'Not found'},
             responseType: ResponseType.json,

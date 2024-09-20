@@ -33,8 +33,22 @@ class RequestFormData {
       if (inputName != null) {
         if (data['filename'] == null || data['filename']!.isEmpty) {
           var value = utf8.decode(await formItem.first);
-          inputs[inputName] =
-              int.tryParse(value.toString()) ?? value.toString();
+          if (inputName.contains('[]')) {
+            String clearedInputName = inputName.replaceAll('[]', '');
+            if (inputs.containsKey(clearedInputName)) {
+              if (inputs[clearedInputName] is List) {
+                inputs[clearedInputName]
+                    .add(int.tryParse(value.toString()) ?? value.toString());
+              }
+            } else {
+              List valueList = [];
+              valueList.add(int.tryParse(value.toString()) ?? value.toString());
+              inputs[clearedInputName] = valueList;
+            }
+          } else {
+            inputs[inputName] =
+                int.tryParse(value.toString()) ?? value.toString();
+          }
         } else {
           RequestFile file = RequestFile(
             filename: data['filename'].toString(),
@@ -42,14 +56,14 @@ class RequestFormData {
             stream: formItem,
           );
           if (inputName.contains('[]')) {
-            List<RequestFile> files = [];
-            files.add(file);
             String clearedInputName = inputName.replaceAll('[]', '');
             if (inputs.containsKey(clearedInputName)) {
               if (inputs[clearedInputName] is List<RequestFile>) {
                 inputs[clearedInputName].add(file);
               }
             } else {
+              List<RequestFile> files = [];
+              files.add(file);
               inputs[clearedInputName] = files;
             }
           } else {
