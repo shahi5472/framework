@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class EndWith extends ValidationRule {
   final String end;
-  EndWith({required this.end, super.customErrorMessage});
+  EndWith({required this.end, super.message});
 
   @override
   bool validate(value, data) {

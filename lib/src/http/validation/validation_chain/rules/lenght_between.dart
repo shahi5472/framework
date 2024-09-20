@@ -4,7 +4,7 @@ class LengthBetween extends ValidationRule {
   final num lowerBoundary;
   final num higherBoundary;
   LengthBetween(
-      {super.customErrorMessage,
+      {super.message,
       required this.lowerBoundary,
       required this.higherBoundary});
 

@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class MaxLength extends ValidationRule {
   int maxLength;
-  MaxLength({required this.maxLength, super.customErrorMessage});
+  MaxLength({required this.maxLength, super.message});
 
   @override
   bool validate(value, data) {

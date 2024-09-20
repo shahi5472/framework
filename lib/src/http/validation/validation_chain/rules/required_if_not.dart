@@ -3,7 +3,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class RequiredIfNot extends ValidationRule {
   final String payload;
-  RequiredIfNot({required this.payload, super.customErrorMessage});
+  RequiredIfNot({required this.payload, super.message});
 
   @override
   bool validate(value, data) {

@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class NotInArray<T> extends ValidationRule {
   final List<T> array;
-  NotInArray({required this.array, super.customErrorMessage});
+  NotInArray({required this.array, super.message});
 
   @override
   bool validate(value, data) {

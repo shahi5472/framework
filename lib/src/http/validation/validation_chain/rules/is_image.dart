@@ -2,7 +2,7 @@ import 'package:vania/vania.dart';
 
 class IsImage extends ValidationRule {
   final String args;
-  IsImage({required this.args, super.customErrorMessage});
+  IsImage({required this.args, super.message});
 
   @override
   bool validate(value, data) {

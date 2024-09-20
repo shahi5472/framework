@@ -2,7 +2,7 @@ import 'package:vania/src/config/defined_regexp.dart';
 import 'package:vania/src/http/validation/validation_chain/validation_rule.dart';
 
 class IsEmail extends ValidationRule {
-  IsEmail({super.customErrorMessage});
+  IsEmail({super.message});
 
   @override
   bool validate(dynamic value, data) {

@@ -4,7 +4,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class GreaterThan extends ValidationRule {
   final num compare;
-  GreaterThan({required this.compare, super.customErrorMessage});
+  GreaterThan({required this.compare, super.message});
   @override
   bool validate(value, data) {
     value = num.parse(value.toString());

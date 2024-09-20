@@ -2,7 +2,7 @@ import 'package:vania/src/http/validation/validation_chain/validation_rule.dart'
 
 class Max extends ValidationRule {
   final num maxValue;
-  Max({required this.maxValue, super.customErrorMessage});
+  Max({required this.maxValue, super.message});
 
   @override
   bool validate(value, data) {

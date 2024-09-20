@@ -2,7 +2,7 @@ import 'package:vania/vania.dart';
 
 class IsFile extends ValidationRule {
   final String args;
-  IsFile({required this.args, super.customErrorMessage});
+  IsFile({required this.args, super.message});
 
   @override
   bool validate(value, data) {
