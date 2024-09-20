@@ -31,7 +31,6 @@ class RequestFormData {
       String? inputName = data['name'];
 
       if (inputName != null) {
-        
         if (data['filename'] == null || data['filename']!.isEmpty) {
           var value = utf8.decode(await formItem.first);
           if (inputName.contains('[]')) {
