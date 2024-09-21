@@ -13,7 +13,7 @@ class BaseHttpResponseException {
     this.responseType = ResponseType.json,
   });
 
-  Response response(bool isJson) => isJson
+  Response response(bool isHtml) => isHtml
       ? Response.html(message)
       : Response.json(message is Map ? message : {'message': message}, code);
 }
