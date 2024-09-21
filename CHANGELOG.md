@@ -1,3 +1,11 @@
+## 0.4.1
+
+- Refactor validation rule customErrorMessage to message
+- Fix JSON response for API
+- Fix PostgreSQL sslmode [#118](https://github.com/vania-dart/framework/issues/118)
+- Add enable support for list item submission `form/data` request
+- chore: upgrade dependencies
+
 ## 0.4.0
 
 - Add a new field validation mechanism by [alirezat66](https://github.com/alirezat66) - [PR 99](https://github.com/vania-dart/framework/pull/99)
