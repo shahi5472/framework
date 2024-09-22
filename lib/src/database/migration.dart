@@ -1246,13 +1246,11 @@ class Migration {
 
   /// Mapper for mysql to postgresql query
   String _mysqlToPosgresqlMapper(String queryStr) {
-
     queryStr = queryStr.replaceAllMapped(
         RegExp(
             r'`(\w+)`\s+BIGINT\(\d+\)\s+UNSIGNED\s+NOT\s+NULL\s+AUTO_INCREMENT',
             caseSensitive: false),
         (match) => '"${match[1]}" SERIAL NOT NULL PRIMARY KEY');
-
 
     if (RegExp(r"PRIMARY KEY \(`.*?`\) USING BTREE").hasMatch(queryStr)) {
       queryStr = queryStr.replaceAll(

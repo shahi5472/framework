@@ -1,3 +1,7 @@
+## 0.4.2
+
+- Fix id auto-increment for PostgreSQL compatibility [#127](https://github.com/vania-dart/framework/issues/118)
+
 ## 0.4.1
 
 - Refactor validation rule customErrorMessage to message
