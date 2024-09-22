@@ -80,6 +80,7 @@ class Migration {
       query.write(
           '''DROP TABLE IF EXISTS `$name`; CREATE TABLE `$name` (${_queries.join(',')}$primary$index$foreig)''');
       String sqlQuery = query.toString();
+
       if (MigrationConnection().database?.driver == 'Postgresql') {
         sqlQuery = _mysqlToPosgresqlMapper(sqlQuery);
       }
@@ -1245,9 +1246,13 @@ class Migration {
 
   /// Mapper for mysql to postgresql query
   String _mysqlToPosgresqlMapper(String queryStr) {
-    if (queryStr.contains("AUTO_INCREMENT")) {
-      queryStr = queryStr.replaceAll("AUTO_INCREMENT", "PRIMARY KEY");
-    }
+
+    queryStr = queryStr.replaceAllMapped(
+        RegExp(
+            r'`(\w+)`\s+BIGINT\(\d+\)\s+UNSIGNED\s+NOT\s+NULL\s+AUTO_INCREMENT',
+            caseSensitive: false),
+        (match) => '"${match[1]}" SERIAL NOT NULL PRIMARY KEY');
+
 
     if (RegExp(r"PRIMARY KEY \(`.*?`\) USING BTREE").hasMatch(queryStr)) {
       queryStr = queryStr.replaceAll(
