@@ -4,8 +4,9 @@ import 'dart:io';
 import 'package:vania/src/http/request/request_form_data.dart';
 
 String _fixJsonString(String jsonString) {
-  return jsonString.replaceAllMapped(RegExp(r'("\w+": )(\d+)([\s,}])'),
-      (Match match) => '${match[1]}"${match[2]}"${match[3]}');
+  return jsonString.replaceAllMapped(
+      RegExp(r'("\w+":)\s*(\d+|\d+\.\d+)([\s,}])'),
+      (Match match) => '${match[1]}${match[2]}${match[3]}');
 }
 
 class RequestBody {
