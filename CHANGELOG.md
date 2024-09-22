@@ -1,3 +1,8 @@
+## 0.4.3
+
+- Fix nested json [#128](https://github.com/vania-dart/framework/issues/128)
+- Add  json to the request `request.json()`
+
 ## 0.4.2
 
 - Fix id auto-increment for PostgreSQL compatibility [#127](https://github.com/vania-dart/framework/issues/118)
