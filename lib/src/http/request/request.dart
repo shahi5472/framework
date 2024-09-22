@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:vania/src/exception/validation_exception.dart';
 import 'package:vania/src/http/request/request_body.dart';
@@ -148,6 +149,18 @@ class Request {
     }
 
     return requestItems;
+  }
+
+  Map json(String key) {
+    if (_all[key] != null && _all[key] is String) {
+      return jsonDecode(_all[key]);
+    }
+
+    if (_all[key] != null && _all[key] is Map) {
+      return _all[key];
+    }
+
+    return {};
   }
 
   dynamic input([String? key, dynamic defaultVal]) {
