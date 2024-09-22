@@ -53,6 +53,11 @@ class WebSocketHandler implements WebSocketEvent {
       },
     }));
 
+    Function? openFunction = _events['${routePath}_connect'];
+    if (openFunction != null) {
+      Function.apply(openFunction, <dynamic>[client]);
+    }
+
     websocket.listen((data) async {
       try {
         if (_middleware[_websocketRoute] != null) {
@@ -107,8 +112,18 @@ class WebSocketHandler implements WebSocketEvent {
       }
       Function.apply(controller, <dynamic>[client, message]);
     }, onDone: () {
+      Function? openFunction = _events['${routePath}_disconnect'];
+      if (openFunction != null) {
+        Function.apply(openFunction, <dynamic>[client]);
+      }
+
       _session.removeSession(sessionId);
     }, onError: (_) {
+      Function? openFunction = _events['${routePath}_error'];
+      if (openFunction != null) {
+        Function.apply(openFunction, <dynamic>[client]);
+      }
+
       _session.removeSession(sessionId);
     });
   }
