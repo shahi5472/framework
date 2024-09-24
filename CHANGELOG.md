@@ -1,3 +1,9 @@
+## 0.5.0
+
+- feat: Gate feature for defining user permissions
+- Add WebSocket connect, disconnect, and error handling on the server side (#126)
+- Add user getter method to Request class
+
 ## 0.4.3
 
 - Fix nested json [#128](https://github.com/vania-dart/framework/issues/128)
@@ -17,7 +23,7 @@
 
 ## 0.4.0
 
-- Add a new field validation mechanism by [alirezat66](https://github.com/alirezat66) - [PR 99](https://github.com/vania-dart/framework/pull/99)
+- feat: a new field validation mechanism by [alirezat66](https://github.com/alirezat66) - [PR 99](https://github.com/vania-dart/framework/pull/99)
 - Fix nested route group [#98](https://github.com/vania-dart/framework/issues/98)
 - Fix middleware issue
 
