@@ -12,7 +12,7 @@ class Request {
 
   Request.from({required this.request, this.route});
 
-  Map? get user => Auth().user(); 
+  Map? get user => Auth().user();
 
   String? get ip => request.connectionInfo?.remoteAddress.address;
 

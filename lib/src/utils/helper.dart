@@ -9,6 +9,10 @@ String url(String path) => '${env<String>('APP_URL')}/$path';
 
 String assets(String src) => url(src);
 
+bool can(String ability) => Gate().allows(ability);
+
+bool cannot(String ability) => Gate().denies(ability);
+
 T env<T>(String key, [dynamic defaultValue]) => Env.get<T>(key, defaultValue);
 
 abort(int code, String message) {
