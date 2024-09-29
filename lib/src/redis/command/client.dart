@@ -557,7 +557,6 @@ class RedisClient {
     try {
       res.throwIfError();
     } on RedisException catch (e) {
-      print(e.hashCode);
       Logger.log(
         jsonEncode({
           'error': 'RedisException',
