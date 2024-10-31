@@ -53,29 +53,29 @@ class WebSocketHandler implements WebSocketEvent {
       },
     }));
 
+    try {
+      if (_middleware[_websocketRoute] != null) {
+        await webSocketMiddlewareHandler(
+          _middleware[_websocketRoute] as List<WebSocketMiddleware>,
+          req,
+        );
+      }
+    } on WebSocketException catch (e) {
+      websocket.add(jsonEncode({
+        'event': 'error',
+        'payload': {
+          'message': e.message,
+        },
+      }));
+      return;
+    }
+
     Function? openFunction = _events['${routePath}_connect'];
     if (openFunction != null) {
       Function.apply(openFunction, <dynamic>[client]);
     }
 
     websocket.listen((data) async {
-      try {
-        if (_middleware[_websocketRoute] != null) {
-          await webSocketMiddlewareHandler(
-            _middleware[_websocketRoute] as List<WebSocketMiddleware>,
-            req,
-          );
-        }
-      } on WebSocketException catch (e) {
-        websocket.add(jsonEncode({
-          'event': 'error',
-          'payload': {
-            'message': e.message,
-          },
-        }));
-        return;
-      }
-
       Map<String, dynamic> payload = jsonDecode(data);
       String event = '${routePath}_${payload[webScoketEventKey]}';
 
