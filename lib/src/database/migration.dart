@@ -226,6 +226,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     final columnDefinition = StringBuffer('`$name` $type');
 
@@ -242,6 +243,10 @@ class Migration {
     }
 
     columnDefinition.write(nullable ? ' NULL' : ' NOT NULL');
+
+    if (unique) {
+      columnDefinition.write(' UNIQUE');
+    }
 
     if (defaultValue != null) {
       RegExp funcRegex = RegExp(r'^\w+\(.*\)$');
@@ -328,6 +333,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -342,6 +348,7 @@ class Migration {
       expression: expression,
       virtuality: virtuality,
       increment: true,
+      unique: unique,
     );
   }
 
@@ -357,6 +364,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -371,6 +379,7 @@ class Migration {
       expression: expression,
       virtuality: virtuality,
       increment: increment,
+      unique: unique,
     );
   }
 
@@ -386,6 +395,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -400,6 +410,7 @@ class Migration {
       expression: expression,
       virtuality: virtuality,
       increment: increment,
+      unique: unique,
     );
   }
 
@@ -415,6 +426,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -429,6 +441,7 @@ class Migration {
       expression: expression,
       virtuality: virtuality,
       increment: increment,
+      unique: unique,
     );
   }
 
@@ -444,6 +457,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -458,6 +472,7 @@ class Migration {
       expression: expression,
       virtuality: virtuality,
       increment: increment,
+      unique: unique,
     );
   }
 
@@ -473,6 +488,7 @@ class Migration {
     String? expression,
     String? virtuality,
     bool increment = false,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -487,6 +503,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -500,6 +517,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -512,6 +530,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -527,6 +546,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -539,6 +559,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -554,6 +575,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -566,6 +588,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -581,6 +604,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -593,6 +617,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -606,6 +631,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -618,6 +644,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -631,6 +658,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -643,6 +671,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -655,6 +684,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -666,6 +696,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -678,6 +709,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -689,6 +721,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -701,6 +734,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -712,6 +746,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -724,6 +759,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -735,6 +771,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -746,6 +783,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -767,6 +805,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     char(
       name,
@@ -776,6 +815,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -789,6 +829,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -801,6 +842,7 @@ class Migration {
       expression: expression,
       zeroFill: zeroFill,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -814,6 +856,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -826,6 +869,7 @@ class Migration {
       expression: expression,
       zeroFill: zeroFill,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -837,6 +881,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -847,6 +892,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -858,6 +904,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -868,6 +915,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -879,6 +927,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -889,6 +938,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -900,6 +950,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -910,6 +961,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -921,6 +973,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -931,6 +984,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -942,6 +996,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -963,6 +1018,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -973,6 +1029,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -984,6 +1041,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -994,6 +1052,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1010,6 +1069,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1020,6 +1080,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1038,6 +1099,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1048,6 +1110,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1059,6 +1122,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1069,6 +1133,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1080,6 +1145,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1090,6 +1156,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1101,6 +1168,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1111,6 +1179,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1122,6 +1191,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1132,6 +1202,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1143,6 +1214,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1153,6 +1225,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1164,6 +1237,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1174,6 +1248,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1185,6 +1260,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     addColumn(
       name,
@@ -1195,6 +1271,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1207,6 +1284,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     final enumValuesString = enumValues.map((value) => "'$value'").join(', ');
     addColumn(
@@ -1218,6 +1296,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
@@ -1230,6 +1309,7 @@ class Migration {
     String? collation,
     String? expression,
     String? virtuality,
+    bool unique = false,
   }) {
     final setValuesString = setValues.map((value) => "'$value'").join(', ');
     addColumn(
@@ -1241,6 +1321,7 @@ class Migration {
       collation: collation,
       expression: expression,
       virtuality: virtuality,
+      unique: unique,
     );
   }
 
