@@ -28,8 +28,6 @@ class ControllerHandler {
 
       response.makeResponse(request.response);
     } on ValidationException catch (error) {
-      print(request.headers['accept']);
-      print(request.headers['accept'].contains('html'));
       error
           .response(request.headers['accept'].toString().contains('html'))
           .makeResponse(request.response);

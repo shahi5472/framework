@@ -20,7 +20,7 @@ class MigrationConnection {
       await DatabaseClient().setup();
       database = DatabaseClient().database;
       if (database == null) {
-        print('A driver must be specified.');
+        print('A database must be specified.');
         exit(0);
       }
       dbConnection = database?.connection;
@@ -52,8 +52,8 @@ class Migration {
   @mustCallSuper
   Future<void> up() async {
     if (MigrationConnection().dbConnection == null) {
-      print('A driver must be specified.');
-      throw 'A driver must be specified.';
+      print('A database must be specified.');
+      throw 'A database must be specified.';
     }
   }
 
@@ -61,8 +61,8 @@ class Migration {
   @mustCallSuper
   Future<void> down() async {
     if (MigrationConnection().dbConnection == null) {
-      print('A driver must be specified.');
-      throw 'A driver must be specified.';
+      print('A database must be specified.');
+      throw 'A database must be specified.';
     }
   }
 
@@ -289,7 +289,8 @@ class Migration {
   }
 
   void index(ColumnIndex type, String name, List<String> columns) {
-    if (MigrationConnection().database?.driver == 'pgsql') {
+    if (MigrationConnection().database?.driver == 'pgsql' ||
+        MigrationConnection().database?.driver == 'postgresql') {
       _indexes.add('INDEX `$name` (${columns.join(',')})');
     } else {
       if (type == ColumnIndex.indexKey) {
