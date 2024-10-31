@@ -4,10 +4,12 @@ import 'package:vania/vania.dart';
 Future<void> initializeConfig(config) async {
   Config().setApplicationConfig = config;
 
-  try {
-    await DatabaseClient().setup();
-  } on InvalidArgumentException catch (e) {
-    Logger.log(e.cause.toString(), type: Logger.ERROR);
+  if (env('DB_CONNECTION') != null) {
+    try {
+      await DatabaseClient().setup();
+    } on InvalidArgumentException catch (e) {
+      Logger.log(e.cause.toString(), type: Logger.ERROR);
+    }
   }
 
   List<ServiceProvider> providers = config['providers'];
