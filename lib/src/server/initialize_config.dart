@@ -1,12 +1,18 @@
+import 'package:eloquent/eloquent.dart';
 import 'package:vania/vania.dart';
 
 Future<void> initializeConfig(config) async {
   Config().setApplicationConfig = config;
+
+  try {
+    await DatabaseClient().setup();
+  } on InvalidArgumentException catch (e) {
+    Logger.log(e.cause.toString(), type: Logger.ERROR);
+  }
+
   List<ServiceProvider> providers = config['providers'];
   for (ServiceProvider provider in providers) {
     await provider.register();
     await provider.boot();
   }
-
-  await DatabaseClient().setup();
 }
