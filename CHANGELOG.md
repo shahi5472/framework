@@ -1,3 +1,10 @@
+## 0.5.1
+
+- Adde support for unique constraints in migrations. Thanks to [WellingtonNico](https://github.com/WellingtonNico) for the contribution.
+- Refactor configuration initialization by moving database setup before service provider registration, ensuring a more reliable startup sequence.
+- Fix Resolved an issue with WebSocket middleware that caused unexpected behavior. See [#132](https://github.com/vania-dart/framework/issues/132) for details.
+- Chore Upgraded dependencies to their latest versions.
+
 ## 0.5.0
 
 - feat: Gate feature for defining user permissions
