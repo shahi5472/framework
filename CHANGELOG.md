@@ -1,6 +1,12 @@
+## 0.6.0
+
+- Refactor incoming route log
+- Remove unnecessary library name
+- Add Multi-language support [#141](https://github.com/vania-dart/framework/issues/141) [Localization](https://vdart.dev/docs/the-basics/localization)
+
 ## 0.5.1
 
-- Adde support for unique constraints in migrations. Thanks to [WellingtonNico](https://github.com/WellingtonNico) for the contribution.
+- Add support for unique constraints in migrations. Thanks to [WellingtonNico](https://github.com/WellingtonNico) for the contribution.
 - Refactor configuration initialization by moving database setup before service provider registration, ensuring a more reliable startup sequence.
 - Fix Resolved an issue with WebSocket middleware that caused unexpected behavior. See [#132](https://github.com/vania-dart/framework/issues/132) for details.
 - Chore Upgraded dependencies to their latest versions.
