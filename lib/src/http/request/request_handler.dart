@@ -14,6 +14,10 @@ Future httpRequestHandler(HttpRequest req) async {
       WebSocketTransformer.isUpgradeRequest(req)) {
     WebSocketHandler().handler(req);
   } else {
+    DateTime startTime = DateTime.now();
+    String requestUri = req.uri.path;
+    String starteRequest = startTime.format();
+
     try {
       /// Check if cors is enabled
       HttpCors(req);
@@ -44,6 +48,15 @@ Future httpRequestHandler(HttpRequest req) async {
     } catch (e) {
       Logger.log(e.toString(), type: Logger.ERROR);
       _response(req, e.toString());
+    }
+
+    if (env<bool>('APP_DEBUG')) {
+      var endTime = DateTime.now();
+      var duration = endTime.difference(startTime).inMilliseconds;
+      var requestedPath = requestUri.isNotEmpty
+          ? requestUri.padRight(118 - requestUri.length, '.')
+          : ''.padRight(118, '.');
+      print('$starteRequest $requestedPath ~ ${duration}ms');
     }
   }
 }
