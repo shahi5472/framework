@@ -3,12 +3,12 @@ import 'dart:io';
 
 import 'package:vania/src/utils/helper.dart';
 
-class Language {
-  static final Language _singleton = Language._internal();
-  factory Language() {
+class Localization {
+  static final Localization _singleton = Localization._internal();
+  factory Localization() {
     return _singleton;
   }
-  Language._internal();
+  Localization._internal();
 
   final Map<String, dynamic> _language = {};
 

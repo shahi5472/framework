@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:vania/src/language_handler/language.dart';
+import 'package:vania/src/localization_handler/localization.dart';
 import 'package:vania/vania.dart';
 
 String storagePath(String file) => 'storage/$file';
@@ -20,7 +20,7 @@ String trans(
   String key, [
   Map<String, dynamic>? args,
 ]) =>
-    Language().trans(
+    Localization().trans(
       key,
       args,
     );

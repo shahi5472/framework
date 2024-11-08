@@ -1,5 +1,5 @@
 import 'package:vania/src/container.dart';
-import 'package:vania/src/language_handler/language.dart';
+import 'package:vania/src/localization_handler/localization.dart';
 import 'package:vania/src/server/base_http_server.dart';
 import 'package:vania/vania.dart';
 
@@ -10,7 +10,7 @@ class Application extends Container {
     if (_singleton == null) {
       _singleton = Application._internal();
       Env().load();
-      Language().init();
+      Localization().init();
     }
     return _singleton!;
   }
