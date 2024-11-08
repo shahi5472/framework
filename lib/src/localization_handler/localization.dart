@@ -16,8 +16,8 @@ class Localization {
   /// - `LANG_PATH` specifies the directory where the language files are stored (defaults to `lib\\lang\\` if not set).
   /// - `LOCALE` specifies the language/locale to load (defaults to `en` if not set).
   void init() async {
-    String locale = env('LOCALE', 'en');
-    String languagePath = env('LANG_PATH', 'lib\\lang\\');
+    String locale = env('APP_LOCALE', 'en');
+    String languagePath = env('APP_LANG_PATH', 'lib\\lang\\');
     Directory directory = Directory('$languagePath$locale');
     List<FileSystemEntity> pathList =
         directory.listSync(recursive: true, followLinks: false);
