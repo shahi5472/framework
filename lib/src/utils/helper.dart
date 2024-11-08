@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:vania/src/language_handler/language.dart';
 import 'package:vania/vania.dart';
 
 String storagePath(String file) => 'storage/$file';
@@ -14,6 +15,15 @@ bool can(String ability) => Gate().allows(ability);
 bool cannot(String ability) => Gate().denies(ability);
 
 T env<T>(String key, [dynamic defaultValue]) => Env.get<T>(key, defaultValue);
+
+String trans(
+  String key, [
+  Map<String, dynamic>? args,
+]) =>
+    Language().trans(
+      key,
+      args,
+    );
 
 abort(int code, String message) {
   throw HttpResponseException(message: message, code: code);
