@@ -5,3 +5,4 @@ export 'number_extension.dart';
 export 'pagination_extension.dart';
 export 'string_extension.dart';
 export 'string_list_extension.dart';
+export 'localization_extension.dart';
