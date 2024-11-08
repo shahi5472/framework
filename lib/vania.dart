@@ -1,5 +1,3 @@
-library vania;
-
 export 'src/application.dart';
 
 export 'src/config/config.dart';
