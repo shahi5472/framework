@@ -1,3 +1,7 @@
+## 0.6.1
+
+- Fix get language path
+
 ## 0.6.0
 
 - Refactor incoming route log
