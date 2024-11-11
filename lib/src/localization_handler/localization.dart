@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:vania/src/logger/logger.dart';
 import 'package:vania/src/utils/helper.dart';
 
 class Localization {
@@ -12,22 +13,33 @@ class Localization {
 
   final Map<String, dynamic> _language = {};
 
-  /// Initializes the language data by loading all `.json` language files from `lib\lang` directory.
-  /// - `LANG_PATH` specifies the directory where the language files are stored (defaults to `lib\\lang\\` if not set).
+  /// Initializes the language data by loading all `.json` language files from `lib/lang` directory.
+  /// - `LANG_PATH` specifies the directory where the language files are stored (defaults to `lib/lang/` if not set).
   /// - `LOCALE` specifies the language/locale to load (defaults to `en` if not set).
   void init() async {
-    String locale = env('APP_LOCALE', 'en');
-    String languagePath = env('APP_LANG_PATH', 'lib\\lang\\');
-    Directory directory = Directory('$languagePath$locale');
-    List<FileSystemEntity> pathList =
-        directory.listSync(recursive: true, followLinks: false);
+    String? locale = env('APP_LOCALE');
+    if (locale != null) {
+      String languagePath = env('APP_LANG_PATH', 'lib/lang/');
+      String separator = Platform.pathSeparator;
+      String directoryPath = '$languagePath$separator$locale';
 
-    for (FileSystemEntity item in pathList) {
-      if (item is File && item.path.endsWith('.json')) {
-        String data = item.readAsStringSync();
-        try {
-          _language.addAll(jsonDecode(data));
-        } catch (_) {}
+      Directory directory = Directory(directoryPath);
+
+      if (!directory.existsSync()) {
+        Logger.log('Directory does not exist: ${directory.path}',
+            type: Logger.ALERT);
+        return;
+      }
+      List<FileSystemEntity> pathList =
+          directory.listSync(recursive: true, followLinks: false);
+
+      for (FileSystemEntity item in pathList) {
+        if (item is File && item.path.endsWith('.json')) {
+          String data = item.readAsStringSync();
+          try {
+            _language.addAll(jsonDecode(data));
+          } catch (_) {}
+        }
       }
     }
   }
