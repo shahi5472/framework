@@ -26,6 +26,13 @@ RouteData? httpRouteHandler(HttpRequest req) {
             responseType: ResponseType.json,
           );
         } else {
+          Directory errorsDirectory = Directory('errors');
+          if (errorsDirectory.existsSync()) {
+            File errorFile = File('errors/404.html');
+            if (errorFile.existsSync()) {
+              throw NotFoundException(message: errorFile.readAsStringSync());
+            }
+          }
           throw NotFoundException();
         }
       }

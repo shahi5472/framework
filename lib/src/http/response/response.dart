@@ -7,6 +7,7 @@ import 'package:vania/src/http/response/stream_file.dart';
 enum ResponseType {
   json,
   none,
+  redirect,
   html,
   sse,
   streamFile,
@@ -53,7 +54,7 @@ class Response {
     res.statusCode = httpStatusCode;
     if (headers.isNotEmpty) {
       headers.forEach((key, value) {
-        res.headers.add(key, value);
+        res.headers.set(key, value);
       });
     }
     switch (responseType) {
@@ -105,11 +106,19 @@ class Response {
         res.headers.add("Content-Disposition", stream.contentDisposition);
         res.addStream(stream.stream!).then((_) => res.close());
         break;
+      case ResponseType.redirect:
+        res.headers.set(HttpHeaders.locationHeader, data);
+        await res.close();
       default:
         res.write(data);
         await res.close();
     }
   }
+
+  static redirect(String location) => Response(
+      responseType: ResponseType.redirect,
+      data: location,
+      httpStatusCode: HttpStatus.found);
 
   static json(
     dynamic jsonData, [
