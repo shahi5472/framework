@@ -1,3 +1,8 @@
+## 0.6.2
+
+- Add redirect method  [#144](https://github.com/vania-dart/framework/issues/144)
+- Add custom 404 error handling via HTML file [#145](https://github.com/vania-dart/framework/issues/145)
+
 ## 0.6.1
 
 - Fix get language path
